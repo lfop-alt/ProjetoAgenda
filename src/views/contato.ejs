@@ -1,0 +1,47 @@
+<%- include('includes/head'); %>
+<%- include('includes/navbar') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-5">
+      <h1 class="text-center" text-center>Contato</h1>
+      <%- include('includes/massege')  %>
+      <div class="row ">
+        <div class="col-lg ">
+          <h4 class="text-center">Crie ou edite seu contato</h4>
+          <% if(contato._id) { %>
+            <form action="/contato/edit/<%= contato._id %>" method="POST">
+          <% } else {%>
+            <form action="/contato/register" method="POST">
+          <% } %>
+            <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+            <div class="form-group my-3">
+              <label>Nome</label>
+              <input value=" <%= contato.nome %>" type="text" class="form-control" name="nome" aria-describedby="emailHelp" >
+            </div>
+            <div class="form-group">
+              <label>Sobrenome</label>
+              <input value=" <%= contato.sobrenome %>" type="text" class="form-control" name="sobrenome" aria-describedby="passwordHelp" >
+            </div>
+            <div class="form-group my-3">
+              <label>Email</label>
+              <input value=" <%= contato.email %>" type="email" class="form-control" name="email" aria-describedby="emailHelp" >
+            </div>
+            <div class="form-group">
+              <label>Telefone</label>
+              <input value=" <%= contato.telefone %>" type="tel" class="form-control" name="telefone" aria-describedby="passwordHelp" >
+            </div>
+            <button type="submit" class="btn btn-primary my-3">Salvar</button>
+            <a class="btn btn-primary my-3 5" href="/">Voltar</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+  
+
+<%- include('includes/footer'); %>
